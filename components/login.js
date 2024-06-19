@@ -16,6 +16,10 @@ const Login = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
+  const handleLogin = () => {
+    navigation.navigate("Dashboard", { name, email });
+  };
+
   const navigation = useNavigation();
   return (
     <SafeAreaView>
@@ -29,22 +33,19 @@ const Login = () => {
           <TextInput
             style={styles.once}
             value={name}
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={(text) => setName(text)}
             placeholder="  Name"
           />
           <TextInput
             style={styles.twice}
             value={email}
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={(text) => setEmail(text)}
             placeholder="  Email"
-            secureTextEntry={true}
           />
-
+        </View>
+        <View>
           <View>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => navigation.navigate("Dasboard")}
-            >
+            <TouchableOpacity style={styles.button} onPress={handleLogin}>
               <Text>Login</Text>
             </TouchableOpacity>
           </View>
@@ -151,7 +152,6 @@ const styles = StyleSheet.create({
     width: 310,
     borderWidth: 1,
     borderRadius: 10,
-    marginLeft: 35,
   },
   twice: {
     marginTop: 20,
@@ -160,7 +160,6 @@ const styles = StyleSheet.create({
     width: 310,
     borderWidth: 1,
     borderRadius: 10,
-    marginLeft: 35,
   },
   button: {
     marginTop: 20,
@@ -169,9 +168,10 @@ const styles = StyleSheet.create({
     width: 310,
     borderWidth: 1,
     borderRadius: 10,
-    marginLeft: 35,
+
     justifyContent: "center",
     alignItems: "center",
+    alignSelf: "center",
   },
   dash1: {
     height: 1,
@@ -201,6 +201,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 50,
     marginLeft: 128,
+  },
+  form: {
+    alignContent: "center",
+    alignItems: "center",
   },
 });
 
